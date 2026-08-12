@@ -1,0 +1,89 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "A user of the platform",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "profileImage": { "type": "string" },
+        "bio": { "type": "string" },
+        "role": { "type": "string", "enum": ["user", "admin"] },
+        "createdAt": { "type": "number" }
+      },
+      "required": ["id", "name", "email", "role", "createdAt"]
+    },
+    "Blog": {
+      "title": "Blog",
+      "description": "A blog post",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "slug": { "type": "string" },
+        "content": { "type": "string" },
+        "image": { "type": "string" },
+        "authorId": { "type": "string" },
+        "authorName": { "type": "string" },
+        "authorImage": { "type": "string" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "category": { "type": "string" },
+        "status": { "type": "string", "enum": ["draft", "published"] },
+        "views": { "type": "number" },
+        "likes": { "type": "number" },
+        "commentsCount": { "type": "number" },
+        "createdAt": { "type": "number" },
+        "updatedAt": { "type": "number" }
+      },
+      "required": ["id", "title", "content", "authorId", "status"]
+    },
+    "Comment": {
+      "title": "Comment",
+      "description": "A comment on a blog post",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "blogId": { "type": "string" },
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "userImage": { "type": "string" },
+        "comment": { "type": "string" },
+        "parentId": { "type": "string" },
+        "createdAt": { "type": "number" },
+        "likes": { "type": "number" }
+      },
+      "required": ["blogId", "userId", "comment", "createdAt"]
+    },
+    "Category": {
+      "title": "Category",
+      "description": "A blog category",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "createdAt": { "type": "number" }
+      },
+      "required": ["name", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "User profiles collection"
+    },
+    "/blogs/{blogId}": {
+      "schema": { "$ref": "#/entities/Blog" },
+      "description": "Blog posts collection"
+    },
+    "/comments/{commentId}": {
+      "schema": { "$ref": "#/entities/Comment" },
+      "description": "Comments collection"
+    },
+    "/categories/{categoryId}": {
+      "schema": { "$ref": "#/entities/Category" },
+      "description": "Blog categories collection"
+    }
+  }
+}
