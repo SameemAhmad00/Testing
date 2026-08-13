@@ -1,0 +1,2420 @@
+# Product Requirements Document (PRD): Professional Blog Website + Admin Dashboard
+
+## 1. Product Overview
+
+### Product Name
+
+**ProBlog — Professional Publishing Platform**
+
+### Product Type
+
+Modern, responsive blog/content publishing website with a secure administrative dashboard.
+
+### Product Goal
+
+Build a professional, fast, visually polished blog platform where readers can discover and consume high-quality articles while administrators can easily create, manage, publish, analyze, and organize content.
+
+The product should feel comparable to modern editorial platforms such as Medium, Substack, Hashnode, or premium technology publications, while maintaining its own visual identity.
+
+---
+
+# 2. Product Objectives
+
+### Primary Objectives
+
+1. Provide an attractive and professional reading experience.
+2. Make articles easy to discover through categories, tags, search, and recommendations.
+3. Provide excellent typography and readability.
+4. Support responsive layouts for desktop, tablet, and mobile.
+5. Provide a complete admin CMS for managing content.
+6. Allow administrators to create, edit, schedule, publish, and delete posts.
+7. Support images, featured images, authors, categories, tags, SEO metadata, and rich text.
+8. Provide analytics for understanding website performance.
+9. Build the platform with SEO, accessibility, performance, and security as first-class requirements.
+
+### Secondary Objectives
+
+* Newsletter/email subscription.
+* Social sharing.
+* Comments.
+* Related articles.
+* Author profiles.
+* Reading-time estimates.
+* Bookmarks/favorites.
+* Dark mode.
+* Draft autosave.
+* Scheduled publishing.
+
+---
+
+# 3. Target Users
+
+## 3.1 Readers
+
+People who visit the website to:
+
+* Read articles.
+* Discover new topics.
+* Search for specific information.
+* Follow authors.
+* Browse categories.
+* Share articles.
+* Subscribe to updates.
+* Save interesting articles.
+
+## 3.2 Authors
+
+Users who are allowed to create content.
+
+Authors can:
+
+* Create posts.
+* Edit drafts.
+* Upload images.
+* Add categories and tags.
+* Preview articles.
+* Submit posts for review.
+* View their published articles.
+* View basic performance statistics.
+
+## 3.3 Administrators
+
+Administrators have full control over:
+
+* Posts.
+* Authors.
+* Categories.
+* Tags.
+* Media.
+* Comments.
+* Subscribers.
+* Users.
+* Website settings.
+* SEO.
+* Analytics.
+
+---
+
+# 4. Recommended Information Architecture
+
+## Public Website
+
+```text
+Home
+├── Featured Articles
+├── Latest Articles
+├── Popular Articles
+├── Categories
+├── Newsletter
+└── Footer
+
+Blog
+├── All Articles
+├── Category Filter
+├── Tag Filter
+├── Search
+└── Pagination / Infinite Scroll
+
+Article
+├── Breadcrumb
+├── Title
+├── Subtitle
+├── Author
+├── Date
+├── Reading Time
+├── Featured Image
+├── Article Content
+├── Share
+├── Tags
+├── Author Card
+├── Related Articles
+└── Newsletter CTA
+
+Categories
+├── Category Header
+├── Description
+└── Articles
+
+Authors
+├── Author Profile
+└── Author Articles
+
+Search
+├── Search Input
+├── Filters
+└── Results
+
+About
+Contact
+Privacy Policy
+Terms
+404
+```
+
+## Admin Dashboard
+
+```text
+Dashboard
+├── Overview
+├── Analytics
+├── Recent Posts
+└── Quick Actions
+
+Posts
+├── All Posts
+├── Drafts
+├── Published
+├── Scheduled
+└── Trash
+
+Post Editor
+├── Content
+├── Featured Image
+├── Category
+├── Tags
+├── Author
+├── SEO
+├── Publishing
+└── Preview
+
+Categories
+Tags
+Media Library
+Comments
+Authors
+Users
+Subscribers
+Analytics
+Settings
+├── General
+├── Branding
+├── SEO
+├── Social
+├── Email
+├── Comments
+└── Security
+```
+
+---
+
+# 5. Public Website — UI/UX Requirements
+
+## 5.1 Design Direction
+
+The website should have a **premium editorial appearance**.
+
+### Visual characteristics
+
+* Clean.
+* Minimal.
+* Elegant.
+* Spacious.
+* Typography-focused.
+* Strong visual hierarchy.
+* Subtle animations.
+* High-quality imagery.
+* Generous whitespace.
+* Professional color palette.
+
+Avoid:
+
+* Excessive gradients.
+* Too many colors.
+* Overly rounded UI elements.
+* Excessive shadows.
+* Cluttered layouts.
+* Large numbers of competing CTAs.
+
+---
+
+# 6. Color System
+
+A suggested default theme:
+
+### Light Mode
+
+```text
+Background:       #FFFFFF
+Surface:          #F8F9FA
+Primary Text:     #111827
+Secondary Text:   #6B7280
+Border:           #E5E7EB
+Primary Accent:   #2563EB
+Accent Hover:     #1D4ED8
+Success:          #16A34A
+Warning:          #D97706
+Error:            #DC2626
+```
+
+### Dark Mode
+
+```text
+Background:       #0B0F14
+Surface:          #111827
+Primary Text:     #F9FAFB
+Secondary Text:   #9CA3AF
+Border:           #1F2937
+Primary Accent:   #60A5FA
+```
+
+The color system should be implemented through design tokens so the theme can easily be changed later.
+
+---
+
+# 7. Typography
+
+Typography is one of the most important parts of the product.
+
+### Suggested Font System
+
+UI:
+
+* Inter
+* Geist
+* Manrope
+
+Article/editorial:
+
+* Georgia
+* Source Serif
+* Merriweather
+* Newsreader
+
+### Article Typography
+
+Desktop:
+
+```text
+Article title:       48–64px
+Subtitle:            20–24px
+Body:                18–20px
+Line height:         1.7–1.85
+Heading H2:          32–40px
+Heading H3:          24–30px
+```
+
+Mobile:
+
+```text
+Article title:       34–42px
+Subtitle:            18–20px
+Body:                17–19px
+Line height:         1.7
+```
+
+Article content should have a maximum readable width of approximately **680–760px**.
+
+---
+
+# 8. Header
+
+The public header should contain:
+
+### Desktop
+
+Left:
+
+* Logo.
+
+Center/right:
+
+* Home
+* Blog
+* Categories
+* Authors
+* About
+
+Right:
+
+* Search
+* Theme toggle
+* Subscribe button
+
+### Mobile
+
+* Logo
+* Search icon
+* Menu button
+
+Opening the menu should display:
+
+```text
+Home
+Blog
+Categories
+Authors
+About
+Contact
+Subscribe
+Dark Mode
+```
+
+### Header Behavior
+
+* Sticky on scroll.
+* Slight background blur.
+* Subtle bottom border.
+* Compact after scrolling.
+* No excessive animation.
+
+---
+
+# 9. Homepage
+
+The homepage is the most important public page.
+
+## Hero Section
+
+Display:
+
+* Large featured article.
+* Large image.
+* Category.
+* Article title.
+* Short excerpt.
+* Author.
+* Publication date.
+* Reading time.
+
+Example layout:
+
+```text
+--------------------------------------------------
+|                                                |
+|        FEATURED ARTICLE                        |
+|                                                |
+|  [Large Featured Image]    Category            |
+|                            Large Article Title |
+|                            Description         |
+|                            Author • 8 min read |
+|                                                |
+--------------------------------------------------
+```
+
+## Latest Articles
+
+Display article cards in a responsive grid.
+
+Desktop:
+
+```text
+[ Article ] [ Article ] [ Article ]
+[ Article ] [ Article ] [ Article ]
+```
+
+Mobile:
+
+```text
+[ Article ]
+[ Article ]
+[ Article ]
+```
+
+Each card contains:
+
+* Image.
+* Category.
+* Title.
+* Excerpt.
+* Author.
+* Date.
+* Reading time.
+
+---
+
+# 10. Article Card
+
+Article cards should have consistent dimensions.
+
+### Components
+
+```text
+Image
+Category
+Title
+Excerpt
+Author Avatar
+Author Name
+Publication Date
+Reading Time
+```
+
+### Hover Behavior
+
+On desktop:
+
+* Image subtly scales.
+* Title changes accent color.
+* Card slightly moves upward.
+* Transition: 200–300ms.
+
+Avoid excessive motion.
+
+---
+
+# 11. Article Detail Page
+
+This is the core reading experience.
+
+### Layout
+
+```text
+Breadcrumb
+
+Category
+
+Large Article Title
+
+Short Description
+
+Author Avatar
+Author Name
+Published Date
+Reading Time
+
+Featured Image
+
+------------------------------------------------
+                Article Content
+------------------------------------------------
+
+Share buttons
+
+Tags
+
+Author Profile
+
+Related Articles
+
+Newsletter CTA
+```
+
+### Article Features
+
+The article body should support:
+
+* Paragraphs.
+* H1/H2/H3/H4.
+* Bold.
+* Italic.
+* Links.
+* Ordered lists.
+* Unordered lists.
+* Quotes.
+* Images.
+* Image captions.
+* Code blocks.
+* Inline code.
+* Tables.
+* Horizontal separators.
+* Embedded videos.
+* Callout blocks.
+
+---
+
+# 12. Reading Experience
+
+The article page should include a reading progress indicator.
+
+Example:
+
+```text
+████████████░░░░░░░░░░ 58%
+```
+
+The progress bar should appear at the top of the viewport.
+
+Optional:
+
+* Estimated reading time.
+* Table of contents for long articles.
+* "Back to top" button.
+* Previous/next article navigation.
+
+---
+
+# 13. Social Sharing
+
+Support:
+
+* Copy link.
+* X/Twitter.
+* Facebook.
+* LinkedIn.
+* WhatsApp.
+* Email.
+
+On desktop, sharing can appear as a vertical floating toolbar.
+
+On mobile, use a horizontal share bar or bottom action row.
+
+---
+
+# 14. Search
+
+The search page should provide:
+
+```text
+Search articles...
+
+[ Search ]
+
+Results for: "AI"
+
+42 articles found
+
+[Article]
+[Article]
+[Article]
+```
+
+Search should support:
+
+* Article title.
+* Article content.
+* Author.
+* Category.
+* Tags.
+
+### Search UX
+
+When the user types:
+
+* Show search suggestions.
+* Show recent searches where appropriate.
+* Highlight matching terms.
+* Provide empty-state messaging.
+
+---
+
+# 15. Categories
+
+Each category gets its own landing page.
+
+Example:
+
+```text
+Technology
+
+Explore articles about technology,
+software, AI and innovation.
+
+--------------------------------
+
+Latest Technology Articles
+
+[Article] [Article] [Article]
+[Article] [Article] [Article]
+```
+
+Category page should include:
+
+* Category name.
+* Description.
+* Featured category article.
+* Latest articles.
+* Popular articles.
+* Pagination.
+
+---
+
+# 16. Author Pages
+
+Author profile:
+
+```text
+[Avatar]
+
+John Doe
+Technology Writer
+
+Short biography...
+
+[Social Links]
+
+24 Articles
+
+Latest Articles
+----------------
+[Article]
+[Article]
+[Article]
+```
+
+Author data:
+
+* Name.
+* Avatar.
+* Biography.
+* Email, optionally hidden.
+* Website.
+* Social profiles.
+* Role.
+* Number of articles.
+
+---
+
+# 17. Newsletter
+
+Include newsletter signup in:
+
+* Homepage.
+* Article page.
+* Footer.
+* Exit/intention prompt only if desired.
+
+Example:
+
+```text
+Stay informed.
+
+Get our best articles delivered to your inbox.
+
+[ Enter your email              ] [Subscribe]
+```
+
+After successful signup:
+
+```text
+You're subscribed!
+Check your inbox to confirm your email.
+```
+
+---
+
+# 18. Footer
+
+Footer sections:
+
+```text
+Brand
+Short description
+
+Explore
+Blog
+Categories
+Authors
+About
+
+Resources
+Contact
+Privacy
+Terms
+
+Social
+X
+LinkedIn
+Instagram
+YouTube
+
+Newsletter
+Email input
+
+© 2026 Brand Name. All rights reserved.
+```
+
+---
+
+# 19. Admin Dashboard
+
+The admin dashboard should use a professional SaaS-style interface.
+
+### Layout
+
+Desktop:
+
+```text
+┌───────────────┬─────────────────────────────────┐
+│               │ Header                          │
+│    Sidebar    ├─────────────────────────────────┤
+│               │                                 │
+│ Dashboard     │ Main Content                    │
+│ Posts         │                                 │
+│ Media         │                                 │
+│ Categories    │                                 │
+│ Tags          │                                 │
+│ Comments      │                                 │
+│ Authors       │                                 │
+│ Users         │                                 │
+│ Subscribers   │                                 │
+│ Analytics     │                                 │
+│ Settings      │                                 │
+│               │                                 │
+└───────────────┴─────────────────────────────────┘
+```
+
+Mobile:
+
+* Sidebar becomes drawer.
+* Header contains hamburger button.
+* Tables become responsive cards where necessary.
+
+---
+
+# 20. Admin Dashboard Home
+
+Display important metrics.
+
+### Statistics Cards
+
+```text
+Total Views
+125,420
++12.4%
+
+Articles
+248
++8 this month
+
+Subscribers
+12,842
++4.8%
+
+Comments
+1,248
++18.2%
+```
+
+### Charts
+
+Include:
+
+* Views over time.
+* Visitors over time.
+* Top articles.
+* Traffic sources.
+* Subscriber growth.
+* Popular categories.
+
+---
+
+# 21. Quick Actions
+
+Dashboard should have prominent actions:
+
+```text
++ New Article
+
+Upload Media
+
+Manage Comments
+
+View Website
+```
+
+---
+
+# 22. Posts Management
+
+Admin posts page:
+
+```text
+Posts
+
+[ + New Post ]
+
+Search posts...        Filter ▼
+
+-------------------------------------------------
+Title       Author   Category  Status   Date
+-------------------------------------------------
+AI Future   John     Tech      Published
+Design      Sarah    Design    Draft
+Startup     Mike     Business  Scheduled
+-------------------------------------------------
+```
+
+Actions:
+
+* Edit.
+* Preview.
+* Duplicate.
+* Publish.
+* Unpublish.
+* Schedule.
+* Move to trash.
+
+Bulk actions:
+
+* Delete.
+* Publish.
+* Change category.
+* Change author.
+* Add tags.
+
+---
+
+# 23. Post Editor
+
+The post editor is one of the most important admin features.
+
+### Editor Layout
+
+```text
+┌────────────────────────────────────────────────────┐
+│ ← Posts      Save Draft    Preview    Publish      │
+├───────────────────────────────┬────────────────────┤
+│                               │                    │
+│ Article Title                 │ Publish            │
+│                               │ Status: Draft      │
+│ Article subtitle              │ Visibility         │
+│                               │ Publish date       │
+│ Rich Text Editor              │                    │
+│                               │ Category           │
+│                               │                    │
+│                               │ Tags               │
+│                               │                    │
+│                               │ Featured Image     │
+│                               │                    │
+│                               │ SEO                │
+└───────────────────────────────┴────────────────────┘
+```
+
+---
+
+# 24. Post Editor Features
+
+### Title
+
+* Character guidance.
+* SEO preview.
+
+### Slug
+
+Example:
+
+```text
+/the-future-of-artificial-intelligence
+```
+
+Allow manual editing.
+
+### Excerpt
+
+Maximum recommended length:
+
+150–250 characters.
+
+### Content
+
+Rich text editor with:
+
+* Text formatting.
+* Headings.
+* Lists.
+* Links.
+* Images.
+* Video.
+* Code.
+* Quotes.
+* Tables.
+* Callouts.
+* Embeds.
+
+### Autosave
+
+Automatically save drafts.
+
+Example status:
+
+```text
+Saving...
+Saved 12 seconds ago
+```
+
+---
+
+# 25. Featured Image
+
+Admin can:
+
+* Upload image.
+* Select existing media.
+* Replace image.
+* Remove image.
+* Add alt text.
+
+Recommended image requirements:
+
+* WebP/AVIF preferred.
+* Responsive image sizes.
+* Automatic optimization.
+* Lazy loading where appropriate.
+
+---
+
+# 26. Publishing Workflow
+
+Posts should have these states:
+
+```text
+Draft
+↓
+Review
+↓
+Scheduled
+↓
+Published
+↓
+Archived / Trash
+```
+
+Admin options:
+
+### Publish Now
+
+Immediately publishes the article.
+
+### Schedule
+
+Example:
+
+```text
+Publish Date
+August 25, 2026
+
+Time
+10:30 AM
+
+Timezone
+Asia/Kolkata
+
+[Schedule Post]
+```
+
+---
+
+# 27. Categories Management
+
+Admin can:
+
+* Create category.
+* Edit category.
+* Delete category.
+* Add description.
+* Add image.
+* Define slug.
+* Set SEO title.
+* Set SEO description.
+
+Category table:
+
+```text
+Name        Slug             Posts
+Technology  technology       82
+Business    business         54
+Design      design           37
+```
+
+---
+
+# 28. Tags Management
+
+Admin can:
+
+* Create tags.
+* Rename tags.
+* Delete tags.
+* View number of posts using each tag.
+
+Example:
+
+```text
+AI
+JavaScript
+React
+Startups
+UX
+Design
+Business
+Productivity
+```
+
+---
+
+# 29. Media Library
+
+The media library should behave like a modern asset manager.
+
+### Features
+
+* Grid view.
+* List view.
+* Upload.
+* Drag and drop.
+* Search.
+* Filter by file type.
+* Delete.
+* Rename.
+* Copy URL.
+* Edit metadata.
+
+Image metadata:
+
+```text
+Filename
+Alt Text
+Caption
+Description
+Dimensions
+File Size
+Upload Date
+```
+
+---
+
+# 30. Comments Management
+
+Admin can manage:
+
+```text
+Pending
+Approved
+Spam
+Trash
+```
+
+Each comment:
+
+```text
+User
+Email
+Article
+Comment
+Date
+Status
+Actions
+```
+
+Actions:
+
+* Approve.
+* Reject.
+* Mark spam.
+* Delete.
+* Reply.
+
+Optional:
+
+* Automatic spam detection.
+* Profanity filtering.
+* Rate limiting.
+
+---
+
+# 31. Author Management
+
+Admin can create and manage authors.
+
+Fields:
+
+```text
+Full Name
+Username
+Email
+Avatar
+Bio
+Job Title
+Website
+Twitter/X
+LinkedIn
+Instagram
+Role
+Status
+```
+
+Roles:
+
+```text
+Super Admin
+Admin
+Editor
+Author
+Contributor
+```
+
+---
+
+# 32. Role-Based Access Control
+
+### Super Admin
+
+Full access.
+
+### Admin
+
+Almost full access except critical system/security configuration.
+
+### Editor
+
+Can:
+
+* Create posts.
+* Edit posts.
+* Publish posts.
+* Manage categories/tags.
+* Manage comments.
+
+### Author
+
+Can:
+
+* Create posts.
+* Edit own drafts.
+* Submit posts.
+* View own content.
+
+### Contributor
+
+Can:
+
+* Create drafts.
+* Cannot publish directly.
+
+---
+
+# 33. Subscriber Management
+
+Admin page:
+
+```text
+Subscribers
+
+12,842 total
+
+Search subscribers...
+
+Email
+Name
+Status
+Subscribed
+Source
+```
+
+Features:
+
+* Search.
+* Export CSV.
+* Delete subscriber.
+* View signup date.
+* Filter active/unsubscribed.
+
+---
+
+# 34. Analytics
+
+Analytics dashboard should include:
+
+### Key metrics
+
+* Page views.
+* Unique visitors.
+* Sessions.
+* Average reading time.
+* Bounce rate.
+* Newsletter conversions.
+* Article views.
+* Traffic sources.
+
+### Top Articles
+
+```text
+1. The Future of AI       24,821 views
+2. Modern Web Design      18,422 views
+3. React Best Practices   15,832 views
+```
+
+### Charts
+
+Use clean charts with:
+
+* 7 days.
+* 30 days.
+* 90 days.
+* 1 year.
+* Custom date range.
+
+---
+
+# 35. SEO Requirements
+
+Every article should support:
+
+```text
+SEO Title
+Meta Description
+Canonical URL
+Slug
+Open Graph Image
+Open Graph Title
+Open Graph Description
+Twitter Card
+Robots Directive
+```
+
+Automatically generate:
+
+* Sitemap.
+* RSS feed.
+* Canonical URLs.
+* Structured data.
+
+Article structured data should follow `Article` / `BlogPosting` schema where appropriate.
+
+---
+
+# 36. Technical SEO
+
+Requirements:
+
+* Server-rendered or statically rendered public pages where appropriate.
+* Semantic HTML.
+* Clean URLs.
+* XML sitemap.
+* RSS feed.
+* Robots.txt.
+* Canonical URLs.
+* Breadcrumb structured data.
+* Article structured data.
+* Optimized images.
+* Fast page load.
+* Mobile-first design.
+
+Example URL structure:
+
+```text
+/blog
+/blog/future-of-ai
+/category/technology
+/tag/artificial-intelligence
+/author/john-doe
+```
+
+Avoid:
+
+```text
+/blog?id=123
+/article.php?id=92
+```
+
+---
+
+# 37. Accessibility
+
+Target **WCAG 2.2 AA**.
+
+Requirements:
+
+* Keyboard navigation.
+* Visible focus states.
+* Proper heading hierarchy.
+* Semantic HTML.
+* Alt text for images.
+* Accessible form labels.
+* Sufficient color contrast.
+* Screen-reader-friendly navigation.
+* Accessible modal dialogs.
+* Reduced-motion support.
+* No functionality dependent solely on hover.
+
+---
+
+# 38. Performance
+
+Target:
+
+```text
+LCP: < 2.5 seconds
+INP: < 200ms
+CLS: < 0.1
+```
+
+Optimization requirements:
+
+* Image compression.
+* Responsive images.
+* Lazy loading.
+* Code splitting.
+* Minification.
+* CDN.
+* Browser caching.
+* Server caching.
+* Optimized fonts.
+* Avoid unnecessary JavaScript.
+
+---
+
+# 39. Responsive Breakpoints
+
+Suggested breakpoints:
+
+```text
+Mobile:       < 640px
+Tablet:       640–1023px
+Desktop:      1024–1279px
+Large:        1280px+
+```
+
+The layout should not simply shrink desktop designs.
+
+Mobile should have its own UX considerations.
+
+---
+
+# 40. Dark Mode
+
+Support:
+
+* Light.
+* Dark.
+* System preference.
+
+Store user preference locally.
+
+The article typography and images should remain comfortable in dark mode.
+
+---
+
+# 41. Notifications
+
+Admin notifications:
+
+```text
+Post published successfully.
+Draft saved.
+Post scheduled.
+Image uploaded.
+Comment approved.
+User created.
+```
+
+Use toast notifications rather than disruptive modal dialogs for normal operations.
+
+---
+
+# 42. Empty States
+
+Every data-heavy page needs a useful empty state.
+
+Example:
+
+```text
+No articles found.
+
+You haven't created any articles yet.
+
+[Create your first article]
+```
+
+Do not show blank tables.
+
+---
+
+# 43. Error States
+
+Examples:
+
+```text
+Something went wrong.
+
+We couldn't load your articles.
+
+[Try Again]
+```
+
+For forms:
+
+```text
+Unable to publish article.
+Please check the highlighted fields.
+```
+
+---
+
+# 44. Confirmation Dialogs
+
+Use confirmation dialogs for destructive operations.
+
+Example:
+
+```text
+Delete article?
+
+This article will be moved to trash.
+
+[Cancel] [Move to Trash]
+```
+
+For permanent deletion:
+
+```text
+Delete permanently?
+
+This action cannot be undone.
+
+[Cancel] [Delete Permanently]
+```
+
+---
+
+# 45. Authentication
+
+Admin authentication should include:
+
+* Email/password.
+* Secure sessions.
+* Password hashing.
+* Password reset.
+* Email verification where appropriate.
+* Optional 2FA.
+* Session expiration.
+* Login rate limiting.
+
+Admin routes must never be publicly accessible.
+
+Example:
+
+```text
+/admin
+/admin/login
+/admin/dashboard
+/admin/posts
+/admin/posts/new
+/admin/posts/:id/edit
+/admin/media
+/admin/users
+/admin/settings
+```
+
+---
+
+# 46. Security Requirements
+
+Implement:
+
+* HTTPS.
+* Secure cookies.
+* CSRF protection where applicable.
+* XSS protection.
+* Input validation.
+* Output escaping.
+* SQL/NoSQL injection protection.
+* Rate limiting.
+* Secure file uploads.
+* Role-based authorization.
+* Audit logging.
+* Password hashing.
+* Admin session management.
+
+Uploaded files should be validated by:
+
+* MIME type.
+* File extension.
+* File size.
+* Image dimensions where appropriate.
+
+---
+
+# 47. Database Model
+
+Recommended core entities:
+
+```text
+User
+Author
+Post
+Category
+Tag
+Media
+Comment
+Subscriber
+PostTag
+PostCategory
+AnalyticsEvent
+Setting
+AuditLog
+```
+
+### Post
+
+```text
+id
+title
+slug
+excerpt
+content
+featuredImageId
+authorId
+status
+publishedAt
+scheduledAt
+createdAt
+updatedAt
+seoTitle
+seoDescription
+canonicalUrl
+```
+
+### User
+
+```text
+id
+name
+email
+passwordHash
+role
+avatar
+status
+createdAt
+updatedAt
+```
+
+### Category
+
+```text
+id
+name
+slug
+description
+image
+seoTitle
+seoDescription
+createdAt
+updatedAt
+```
+
+### Tag
+
+```text
+id
+name
+slug
+createdAt
+updatedAt
+```
+
+### Comment
+
+```text
+id
+postId
+userId
+name
+email
+content
+status
+createdAt
+updatedAt
+```
+
+---
+
+# 48. Recommended API Structure
+
+Example REST API:
+
+```text
+GET    /api/posts
+GET    /api/posts/:slug
+POST   /api/posts
+PUT    /api/posts/:id
+DELETE /api/posts/:id
+
+GET    /api/categories
+POST   /api/categories
+PUT    /api/categories/:id
+DELETE /api/categories/:id
+
+GET    /api/tags
+POST   /api/tags
+DELETE /api/tags/:id
+
+GET    /api/authors
+POST   /api/authors
+PUT    /api/authors/:id
+
+GET    /api/comments
+PUT    /api/comments/:id
+DELETE /api/comments/:id
+
+GET    /api/media
+POST   /api/media
+DELETE /api/media/:id
+
+GET    /api/analytics
+GET    /api/subscribers
+POST   /api/subscribers
+```
+
+---
+
+# 49. Recommended Tech Stack
+
+## Frontend
+
+Recommended:
+
+* Next.js
+* React
+* TypeScript
+* Tailwind CSS
+* shadcn/ui or a custom component system
+* Framer Motion for subtle animations
+
+## Backend
+
+Possible:
+
+* Next.js API routes / server actions
+* Node.js
+* TypeScript
+
+## Database
+
+Recommended:
+
+* PostgreSQL
+
+ORM:
+
+* Prisma
+* Drizzle
+
+## Storage
+
+For media:
+
+* Cloudflare R2
+* AWS S3
+* Supabase Storage
+
+## Authentication
+
+Possible:
+
+* Auth.js
+* Clerk
+* Supabase Auth
+
+## Search
+
+Start with database search.
+
+At larger scale:
+
+* Meilisearch
+* Algolia
+* Elasticsearch/OpenSearch
+
+---
+
+# 50. Component Design System
+
+Create reusable components.
+
+### Public Components
+
+```text
+Header
+Footer
+ArticleCard
+FeaturedArticle
+CategoryBadge
+AuthorAvatar
+AuthorCard
+SearchBar
+NewsletterForm
+ShareButtons
+Tag
+Breadcrumb
+Pagination
+ReadingProgress
+TableOfContents
+RelatedArticles
+```
+
+### Admin Components
+
+```text
+AdminSidebar
+AdminHeader
+StatCard
+DataTable
+FilterBar
+SearchInput
+Modal
+Drawer
+Toast
+Dropdown
+Tabs
+RichTextEditor
+MediaPicker
+ImageUploader
+DatePicker
+Chart
+StatusBadge
+ConfirmDialog
+```
+
+---
+
+# 51. UI States
+
+Every interactive component should support:
+
+```text
+Default
+Hover
+Focus
+Active
+Disabled
+Loading
+Success
+Error
+Empty
+```
+
+For example, buttons should not simply disappear during loading.
+
+Use:
+
+```text
+Publishing...
+```
+
+instead of allowing multiple publish requests.
+
+---
+
+# 52. Animations
+
+Use subtle animations only.
+
+Recommended:
+
+```text
+Duration: 150–300ms
+Easing: ease-out
+```
+
+Examples:
+
+* Card hover.
+* Navigation drawer.
+* Modal opening.
+* Toast appearance.
+* Image hover.
+* Page transitions.
+
+Respect:
+
+```text
+prefers-reduced-motion
+```
+
+---
+
+# 53. Admin UX Principles
+
+The admin panel should prioritize productivity over visual decoration.
+
+Important actions should be immediately visible.
+
+For example:
+
+```text
+Posts
+
+[Search] [Filters]                 [+ New Post]
+
+248 Posts
+
+Table...
+```
+
+Avoid unnecessary dashboards that require multiple clicks for common actions.
+
+A user should be able to:
+
+**Dashboard → New Post → Write → Publish**
+
+with minimal friction.
+
+---
+
+# 54. Article Creation Flow
+
+```text
+1. Admin clicks "New Post"
+          ↓
+2. Editor opens
+          ↓
+3. Admin enters title
+          ↓
+4. Admin writes content
+          ↓
+5. Upload/select featured image
+          ↓
+6. Select category
+          ↓
+7. Add tags
+          ↓
+8. Configure SEO
+          ↓
+9. Preview
+          ↓
+10. Publish / Schedule / Save Draft
+```
+
+---
+
+# 55. Publishing Validation
+
+Before publishing, validate:
+
+* Title exists.
+* Content exists.
+* Author exists.
+* Category exists.
+* Featured image has alt text if required.
+* Slug is valid.
+* SEO title is valid.
+* Meta description is valid.
+
+Show a clear checklist:
+
+```text
+Publishing Checklist
+
+✓ Title
+✓ Content
+✓ Author
+✓ Category
+✓ Featured Image
+⚠ SEO Description
+
+[Publish Anyway] [Fix SEO]
+```
+
+---
+
+# 56. Admin Settings
+
+## General
+
+```text
+Site Name
+Site Description
+Logo
+Favicon
+Timezone
+Language
+```
+
+## Branding
+
+```text
+Primary Color
+Logo
+Dark Logo
+Favicon
+Social Sharing Image
+```
+
+## SEO
+
+```text
+Default SEO Title
+Default Meta Description
+Google/Search settings
+Sitemap settings
+```
+
+## Social
+
+```text
+X
+Facebook
+Instagram
+LinkedIn
+YouTube
+```
+
+## Comments
+
+```text
+Enable Comments
+Require Approval
+Allow Guest Comments
+Spam Protection
+```
+
+## Email
+
+```text
+Newsletter Provider
+Sender Name
+Sender Email
+```
+
+---
+
+# 57. Audit Logs
+
+Admin actions should be logged.
+
+Example:
+
+```text
+Admin: John Doe
+Action: Published Post
+Post: The Future of AI
+Time: Aug 14, 2026 10:42 AM
+IP: ********
+```
+
+Log:
+
+* Login.
+* Logout.
+* Post creation.
+* Post editing.
+* Publishing.
+* Deletion.
+* User creation.
+* Role changes.
+* Settings changes.
+
+---
+
+# 58. SEO-Friendly Sitemap
+
+Generate:
+
+```text
+/sitemap.xml
+```
+
+Include:
+
+* Homepage.
+* Blog pages.
+* Article pages.
+* Category pages.
+* Author pages.
+
+Exclude:
+
+* Admin pages.
+* Login pages.
+* Drafts.
+* Trash.
+* Private content.
+
+---
+
+# 59. 404 Page
+
+Professional 404 page:
+
+```text
+404
+
+Looks like this page got lost.
+
+The article you're looking for doesn't exist
+or may have been moved.
+
+[Go Home] [Browse Articles]
+```
+
+Also show recommended articles.
+
+---
+
+# 60. Admin 404 / Unauthorized
+
+For unauthorized access:
+
+```text
+Access Denied
+
+You don't have permission to view this page.
+
+[Back to Dashboard]
+```
+
+Do not expose sensitive authorization details.
+
+---
+
+# 61. Mobile Admin Experience
+
+Admin dashboard must remain usable on mobile.
+
+Mobile changes:
+
+* Sidebar → drawer.
+* Tables → cards or horizontal scrolling.
+* Two-column editor → single column.
+* Sticky bottom publish controls.
+* Full-screen rich text editor.
+* Large touch targets.
+
+Minimum touch target:
+
+**44 × 44px**
+
+---
+
+# 62. Design Tokens
+
+Use centralized tokens:
+
+```text
+--color-primary
+--color-background
+--color-surface
+--color-text
+--color-muted
+--color-border
+
+--radius-sm
+--radius-md
+--radius-lg
+
+--spacing-xs
+--spacing-sm
+--spacing-md
+--spacing-lg
+--spacing-xl
+
+--shadow-sm
+--shadow-md
+--shadow-lg
+```
+
+This makes future redesigns much easier.
+
+---
+
+# 63. Analytics Events
+
+Track useful events such as:
+
+```text
+page_view
+article_view
+article_scroll
+article_share
+search
+newsletter_signup
+category_view
+author_view
+external_link_click
+```
+
+Admin analytics can then calculate:
+
+* Most-read articles.
+* Average reading depth.
+* Most popular categories.
+* Conversion rate.
+* Search behavior.
+
+---
+
+# 64. Functional Requirements — MVP
+
+The first release should include:
+
+### Public
+
+* [ ] Homepage.
+* [ ] Blog listing.
+* [ ] Article page.
+* [ ] Category pages.
+* [ ] Search.
+* [ ] Author pages.
+* [ ] Newsletter signup.
+* [ ] Responsive design.
+* [ ] Dark mode.
+* [ ] Social sharing.
+* [ ] SEO metadata.
+* [ ] 404 page.
+
+### Admin
+
+* [ ] Login.
+* [ ] Dashboard.
+* [ ] Post CRUD.
+* [ ] Rich text editor.
+* [ ] Drafts.
+* [ ] Publishing.
+* [ ] Scheduling.
+* [ ] Categories.
+* [ ] Tags.
+* [ ] Media library.
+* [ ] Author management.
+* [ ] Comments.
+* [ ] Subscriber management.
+* [ ] Basic analytics.
+* [ ] Settings.
+* [ ] Role-based permissions.
+
+---
+
+# 65. Phase 2 Features
+
+After MVP:
+
+* [ ] Advanced analytics.
+* [ ] Full-text search engine.
+* [ ] Bookmarking.
+* [ ] User accounts.
+* [ ] Personalized recommendations.
+* [ ] Author following.
+* [ ] Reading history.
+* [ ] Push notifications.
+* [ ] Advanced newsletter campaigns.
+* [ ] AI-assisted writing tools.
+* [ ] AI article summaries.
+* [ ] Translation.
+* [ ] Content approval workflows.
+* [ ] A/B testing.
+* [ ] Advanced advertising management.
+
+---
+
+# 66. User Stories
+
+## Reader
+
+**As a reader, I want to browse articles so that I can discover useful content.**
+
+Acceptance criteria:
+
+* Homepage shows latest and featured articles.
+* Articles display title, image, author, date, and reading time.
+* Clicking an article opens the full article.
+
+## Reader Search
+
+**As a reader, I want to search articles so that I can quickly find relevant information.**
+
+Acceptance criteria:
+
+* Search input is accessible.
+* Results show matching articles.
+* Empty results display a useful message.
+
+## Author
+
+**As an author, I want to create drafts so that I can prepare articles before publishing.**
+
+Acceptance criteria:
+
+* Author can create a post.
+* Draft automatically saves.
+* Author can preview the article.
+* Author can submit the article for review.
+
+## Admin
+
+**As an admin, I want to publish an article so that readers can access it.**
+
+Acceptance criteria:
+
+* Admin can select Publish.
+* Post status changes to Published.
+* Published date is stored.
+* Article becomes publicly accessible.
+* Sitemap is updated.
+
+## Admin
+
+**As an admin, I want to schedule an article so that it automatically publishes at a future time.**
+
+Acceptance criteria:
+
+* Admin can select date/time.
+* Article status becomes Scheduled.
+* Article is not publicly visible before scheduled time.
+* Article automatically becomes Published at the scheduled time.
+
+---
+
+# 67. Acceptance Criteria
+
+The product is considered MVP-complete when:
+
+### Design
+
+* Professional visual design is implemented.
+* Desktop, tablet, and mobile layouts work.
+* Light/dark modes work.
+* Typography is consistent.
+* No major layout shifts occur.
+
+### Public Website
+
+* Users can browse articles.
+* Users can search.
+* Users can filter by category.
+* Users can view article pages.
+* Users can share articles.
+* Users can subscribe to the newsletter.
+
+### Admin
+
+* Admin can log in.
+* Admin can create posts.
+* Admin can edit posts.
+* Admin can save drafts.
+* Admin can preview posts.
+* Admin can publish posts.
+* Admin can schedule posts.
+* Admin can manage categories/tags.
+* Admin can manage images.
+* Admin can manage authors.
+* Admin can moderate comments.
+* Admin can view analytics.
+
+### Quality
+
+* Responsive.
+* Accessible.
+* SEO-friendly.
+* Secure.
+* Fast.
+* Error states implemented.
+* Loading states implemented.
+* Empty states implemented.
+
+---
+
+# 68. Suggested Page List
+
+## Public
+
+```text
+/
+ /blog
+ /blog/[slug]
+ /category/[slug]
+ /tag/[slug]
+ /author/[slug]
+ /search
+ /about
+ /contact
+ /privacy
+ /terms
+ /404
+```
+
+## Admin
+
+```text
+/admin/login
+/admin
+/admin/posts
+/admin/posts/new
+/admin/posts/[id]/edit
+/admin/categories
+/admin/tags
+/admin/media
+/admin/comments
+/admin/authors
+/admin/users
+/admin/subscribers
+/admin/analytics
+/admin/settings
+```
+
+---
+
+# 69. Recommended Homepage Visual Hierarchy
+
+The homepage should follow this order:
+
+```text
+HEADER
+
+HERO / FEATURED ARTICLE
+
+LATEST ARTICLES
+
+POPULAR / TRENDING ARTICLES
+
+CATEGORY EXPLORER
+
+AUTHOR SPOTLIGHT
+
+NEWSLETTER CTA
+
+FOOTER
+```
+
+This creates a clear reading journey:
+
+**Discover → Read → Explore → Subscribe**
+
+---
+
+# 70. Recommended Admin Visual Hierarchy
+
+```text
+SIDEBAR
+
+Dashboard
+│
+├── Content
+│   ├── Posts
+│   ├── Categories
+│   ├── Tags
+│   └── Media
+│
+├── Community
+│   ├── Comments
+│   ├── Authors
+│   └── Subscribers
+│
+├── Insights
+│   └── Analytics
+│
+└── System
+    ├── Users
+    └── Settings
+```
+
+This grouping is preferable to placing 12–15 unrelated navigation items into one flat list.
+
+---
+
+# 71. Final Product Vision
+
+The final product should feel like a **premium digital publication combined with a modern SaaS CMS**.
+
+The public website should emphasize:
+
+**Content + Typography + Photography + Readability**
+
+The admin should emphasize:
+
+**Speed + Organization + Productivity + Control**
+
+The most important UX principle is that neither side should feel overloaded.
+
+A reader should be able to go from:
+
+**Homepage → Article → Related Article**
+
+with almost no friction.
+
+An administrator should be able to go from:
+
+**Dashboard → New Post → Write → Preview → Publish**
+
+in a few simple steps.
+
+The architecture should also leave room for future functionality such as memberships, paid subscriptions, newsletters, multiple publications, advanced analytics, AI-assisted content creation, and a larger multi-author editorial workflow without requiring a complete redesign of the platform.
